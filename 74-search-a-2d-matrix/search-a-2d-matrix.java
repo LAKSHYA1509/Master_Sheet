@@ -3,14 +3,20 @@ class Solution {
          int n = matrix.length;
         int m = matrix[0].length;
         
-        // This is linear Solution which is O(n) and very good but we can do better if we know binary search
-       for(int i=0; i<n; i++) {
-           for(int j=0; j<m; j++) {
-               if(matrix[i][j] == target) return true;
-           }
-       }
-        
-        // Now we shall do binary search here 
+        int start = 0;
+        int end = (n*m) - 1;
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            int row = mid / m;
+            int col = mid % m;
+            int midVal = matrix[row][col];
+            if (midVal == target) return true;
+            if (midVal < target) {
+                start = mid + 1;
+            }
+            else
+                end = mid - 1;
+        }
         return false;
     }
 }
