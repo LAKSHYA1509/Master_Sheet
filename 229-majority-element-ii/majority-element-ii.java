@@ -26,15 +26,37 @@ class Solution {
 
 
 
-        ArrayList<Integer> res = new ArrayList<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-        for(int key : map.keySet()) {
-            if (map.get(key) > nums.length / 3) res.add(key);
-        }
         // Approach 2 --> Boyce Moore Voting Algorithm
+
+         ArrayList<Integer> res = new ArrayList<>();
+        // Voting Phase
+        int candidate1 = 0, candidate2 = 0;
+        int count1 = 0, count2 = 0;
+        for(int i=0; i<nums.length; i++) {
+            if(nums[i] == candidate1) count1++;
+            else if(nums[i] == candidate2) count2++;
+            else if(count1 == 0) {
+                candidate1 = nums[i];
+                count1 = 1;
+            }
+            else if(count2 == 0) {
+                candidate2 = nums[i];
+                count2 = 1;
+            }
+            else {
+                count1--;
+                count2--;
+            }
+        }
+        count1 = 0;
+        count2 = 0;
+        for(int num : nums) {
+            if(num == candidate1) count1++;
+            else if(num == candidate2) count2++;
+        }
+        if(count1 > nums.length/3) res.add(candidate1);
+        if(count2 > nums.length/3) res.add(candidate2);
+
         return res;
     }
 }
