@@ -1,25 +1,14 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
         /*
-        Union & Intersection of sorted arrays
         Minimize maximum difference between heights
-        Factorial of large number
-        Elements appearing more than n/k times
+        Reverse Pairs
+        Minimum operations to make array palindrome
+        Minimum swaps to bring elements ≤ K together
         Array subset check
         Three-way partitioning
-        Minimum swaps to bring elements ≤ K together
-        Minimum operations to make array palindrome
-        Game of Life
         Maximum Points from Cards
         Maximum Area of Cake
-        Invalid Transactions
-        Range Sum Query (1D + 2D Immutable)
-        Repeat & Missing Number
-        Single Number
-        Pow(x, n)
-        Set Matrix Zeroes
-        Word Search
-        Reverse Pairs
         Number of Zero-Filled Subarrays
         Increasing Triplet Subsequence
         */
