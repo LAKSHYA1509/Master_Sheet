@@ -3,9 +3,13 @@ class Solution {
         ArrayList<Integer> res = new ArrayList<>();
         int n = nums1.length;
         int m = nums2.length;
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                if(nums1[i] == nums2[j] && !res.contains(nums1[i])) res.add(nums1[i]);
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            set.add(nums1[i]);
+        }
+        for (int i = 0; i < m; i++) {
+            if(set.contains(nums2[i]) && !res.contains(nums2[i])) {
+                res.add(nums2[i]);
             }
         }
         return res.stream().mapToInt(i -> i).toArray();
