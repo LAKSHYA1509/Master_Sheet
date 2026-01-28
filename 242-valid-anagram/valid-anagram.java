@@ -4,20 +4,15 @@ class Solution {
         int m = t.length();
         if (n != m) return false;
 
-        HashMap<Character, Integer> map = new HashMap<>();
+        char[] s1 = new char[26];
+        char[] s2 = new char[26];
         for (int i = 0; i < n; i++) {
-            char c = s.charAt(i);
-            map.put(c, map.getOrDefault(c, 0) + 1);
+            s1[(int)s.charAt(i) - 'a']++;
+            s2[(int)t.charAt(i) - 'a']++;
         }
-        for(int i = 0; i < m; i++) {
-            if(map.containsKey(t.charAt(i))) {
-                map.put(t.charAt(i), map.get(t.charAt(i)) - 1);
-                if(map.get(t.charAt(i)) == 0) map.remove(t.charAt(i));
-            }
+        for(int i = 0; i < 26; i++) {
+            if(s1[i] != s2[i]) return false;
         }
-        // Character frequency check
-//        char[] s1 = s.toCharArray();
-//        char[] t1 = t.toCharArray();
-        return map.isEmpty();
+        return true;
     }
 }
